@@ -8,28 +8,19 @@
         <color>ff5252ff</color>
         <scale>1</scale>
         <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-waiter-50.png/href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="icon-1567-FFEA00-labelson">
-      <IconStyle>
-        <color>ff00eaff</color>
-        <scale>1</scale>
-        <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
-        </Icon>
-      </IconStyle>
-    </Style>
     <Style id="icon-1567-FFEA00-labelson-nodesc">
       <IconStyle>
         <color>ff00eaff</color>
         <scale>1</scale>
         <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-fast-food-66.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -41,7 +32,7 @@
         <color>ff7e231a</color>
         <scale>1</scale>
         <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-dining-room-64.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
