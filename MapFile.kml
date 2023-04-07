@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Københavnerkortet - Mad</name>
+    <name>Copenhagen Eats</name>
     <description>Kategorierne er indelt sådan at $ betyder at man skal regne med at betale under 300 for mad (ikke inkl. drikkevare) pr pers. $$ ligger mellem 300 og 600 og $$$ ligger over 600.</description>
     <Style id="red-icon-style">
       <IconStyle>
