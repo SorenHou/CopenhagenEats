@@ -8,7 +8,7 @@
         <color>ff5252ff</color>
         <scale>1</scale>
         <Icon>
-          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-waiter-50.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -20,7 +20,7 @@
         <color>ff00eaff</color>
         <scale>1</scale>
         <Icon>
-          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-fast-food-66.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -32,7 +32,7 @@
         <color>ff7e231a</color>
         <scale>1</scale>
         <Icon>
-          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-dining-room-64.png</href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
