@@ -8,7 +8,7 @@
         <color>ff5252ff</color>
         <scale>1</scale>
         <Icon>
-          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-waiter-50.png/href>
+          <href>https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/icons8-waiter-50.png</href>
         </Icon>
       </IconStyle>
       <BalloonStyle>
@@ -43,7 +43,7 @@
       <name>$</name>
       <Placemark>
         <name>Friheden</name>
-        <description>God til hverdag og fest. Flaskeøl til 25 kr.</description>
+        <description>God til hverdag og fest. Flaskeøl til billigt.</description>
         <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
@@ -74,7 +74,7 @@
       <Placemark>
         <name>Dürüm Symfoni</name>
         <description>Bedste durum i københavn og det er ikke noget jeg vil diskutere.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5508952,55.6931655,0
@@ -83,8 +83,8 @@
       </Placemark>
       <Placemark>
         <name>Paloma Vermut Café</name>
-        <description>Småretter og lækker vermut. Der er mulighed for at sidde ude.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <description>Småretter og lækker vermut. Der er mulighed for at sidde ude under varmelamper.</description>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5552316000001,55.6933884,0
@@ -93,7 +93,7 @@
       </Placemark>
       <Placemark>
         <name><![CDATA[Ranee's]]></name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5572055,55.6867464,0
@@ -102,8 +102,8 @@
       </Placemark>
       <Placemark>
         <name>Pompette</name>
-        <description>Vin til 50 kr glasset og gode småretter.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <description>Vin til 60 kr glasset og gode småretter.</description>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5553408000001,55.6905635,0
@@ -112,7 +112,7 @@
       </Placemark>
       <Placemark>
         <name>Yellow</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5543712,55.690208,0
@@ -122,7 +122,7 @@
       <Placemark>
         <name>Hidden Dimsum</name>
         <description>Masser af dim sum og andre kinesiske retter. Hvis du er sent på den har de en madbar der er åbent til 2 under restauranten.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5734348,55.6770539,0
@@ -132,7 +132,7 @@
       <Placemark>
         <name>Sabotøren</name>
         <description>Vin til gode priser og et par småretter.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5563619,55.6960624,0
@@ -141,7 +141,7 @@
       </Placemark>
       <Placemark>
         <name>Hart Bageri</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5454322000001,55.675355,0
@@ -150,7 +150,7 @@
       </Placemark>
       <Placemark>
         <name>Gasoline Grill</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5624041999999,55.6761894,0
@@ -159,7 +159,7 @@
       </Placemark>
       <Placemark>
         <name>Gasoline Grill</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.585048,55.683268,0
@@ -169,7 +169,7 @@
       <Placemark>
         <name>Hija de Sanchez</name>
         <description>Tacos!</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.558616,55.6689392,0
@@ -179,7 +179,7 @@
       <Placemark>
         <name>Hija de Sanchez</name>
         <description>Tacos!</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5692127,55.6836823,0
@@ -188,7 +188,7 @@
       </Placemark>
       <Placemark>
         <name>Slurp Ramen Joint</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5672079999999,55.685126,0
@@ -197,7 +197,7 @@
       </Placemark>
       <Placemark>
         <name>Gasoline Grill</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5773811,55.679563,0
@@ -206,7 +206,7 @@
       </Placemark>
       <Placemark>
         <name>District Tonkin</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5876515,55.6835807,0
@@ -215,7 +215,7 @@
       </Placemark>
       <Placemark>
         <name>District Tonkin</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5705545000001,55.6768322,0
@@ -224,7 +224,7 @@
       </Placemark>
       <Placemark>
         <name>Fovl</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5280299,55.703699,0
@@ -233,7 +233,7 @@
       </Placemark>
       <Placemark>
         <name><![CDATA[H15 Cafeteria & Bar]]></name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5599406,55.6696918,0
@@ -242,7 +242,7 @@
       </Placemark>
       <Placemark>
         <name><![CDATA[Tommi's Burger Joint]]></name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5580571,55.6682649,0
@@ -251,7 +251,7 @@
       </Placemark>
       <Placemark>
         <name>Sasaa</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5596625000001,55.6878438,0
@@ -260,7 +260,7 @@
       </Placemark>
       <Placemark>
         <name>lille bakery</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.6133806,55.6900454,0
@@ -269,7 +269,7 @@
       </Placemark>
       <Placemark>
         <name>Bar Pasta Vedbækgade</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.543221,55.696155,0
@@ -278,7 +278,7 @@
       </Placemark>
       <Placemark>
         <name>Tommi’s Burger Joint Nørrebro</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.548185,55.694375,0
@@ -287,7 +287,7 @@
       </Placemark>
       <Placemark>
         <name>Smagsløget</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5596066,55.6729984,0
@@ -296,7 +296,7 @@
       </Placemark>
       <Placemark>
         <name>Will at the Bridge</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5967894,55.6778609,0
@@ -305,7 +305,7 @@
       </Placemark>
       <Placemark>
         <name>Gasoline Grill</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5971418,55.6777963,0
@@ -314,7 +314,7 @@
       </Placemark>
       <Placemark>
         <name>Chicks by Chicks</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5658058,55.6738059,0
@@ -323,7 +323,7 @@
       </Placemark>
       <Placemark>
         <name>Kødbyens Fiskeslagter</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.55885,55.66897,0
@@ -332,7 +332,7 @@
       </Placemark>
       <Placemark>
         <name>Rouge Oysters</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5511801,55.6741444,0
@@ -341,7 +341,7 @@
       </Placemark>
       <Placemark>
         <name>Maobao.</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5492642,55.6871298,0
@@ -350,7 +350,7 @@
       </Placemark>
       <Placemark>
         <name><![CDATA[Baka d'busk]]></name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5477405,55.6872983,0
@@ -359,7 +359,7 @@
       </Placemark>
       <Placemark>
         <name>Depanneur</name>
-        <styleUrl>#icon-1567-FFEA00-labelson-nodesc</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5491733,55.6869172,0
