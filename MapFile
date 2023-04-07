@@ -3,7 +3,7 @@
   <Document>
     <name>Københavnerkortet - Mad</name>
     <description>Kategorierne er indelt sådan at $ betyder at man skal regne med at betale under 300 for mad (ikke inkl. drikkevare) pr pers. $$ ligger mellem 300 og 600 og $$$ ligger over 600.</description>
-    <Style id="icon-1512-FF5252-labelson-nodesc">
+    <Style id="red-icon-style">
       <IconStyle>
         <color>ff5252ff</color>
         <scale>1</scale>
@@ -15,7 +15,7 @@
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="icon-1567-FFEA00-labelson-nodesc">
+    <Style id="yellow-icon-style">
       <IconStyle>
         <color>ff00eaff</color>
         <scale>1</scale>
@@ -27,7 +27,7 @@
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="icon-1577-1A237E-labelson-nodesc">
+    <Style id="blue-icon-style">
       <IconStyle>
         <color>ff7e231a</color>
         <scale>1</scale>
@@ -44,7 +44,7 @@
       <Placemark>
         <name>Friheden</name>
         <description>God til hverdag og fest. Flaskeøl til 25 kr.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5404997000001,55.6980997,0
@@ -54,7 +54,7 @@
       <Placemark>
         <name>Hooked</name>
         <description>Friteret fisk både med og uden brød om.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.5550487,55.6900892,0
@@ -64,7 +64,7 @@
       <Placemark>
         <name>Hooked</name>
         <description>Friteret fisk både med og uden brød om.</description>
-        <styleUrl>#icon-1567-FFEA00-labelson</styleUrl>
+        <styleUrl>#yellow-icon-style</styleUrl>
         <Point>
           <coordinates>
             12.558344,55.669569,0
