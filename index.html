@@ -95,9 +95,9 @@ async function fetchLocationDataFromKml() {
     const coordinatesElement = placemark.querySelector('coordinates');
     const styleUrlElement = placemark.querySelector('styleUrl');
 
-    if (nameElement && descriptionElement && coordinatesElement && styleUrlElement) {
+    if (nameElement && coordinatesElement && styleUrlElement) {
       const name = nameElement.textContent;
-      const description = descriptionElement.textContent;
+      const description = descriptionElement ? descriptionElement.textContent : ''; // Set an empty string if no description is available
       const coordinatesText = coordinatesElement.textContent;
       const coordinatesArray = coordinatesText.split(',').map(parseFloat);
       const locationCoords = {
@@ -107,8 +107,8 @@ async function fetchLocationDataFromKml() {
 
       const styleUrl = styleUrlElement.textContent;
       const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
-      const iconHrefElement = iconStyle.querySelector('href'); // Changed variable name
-      const iconHref = iconHrefElement ? iconHrefElement.textContent : ''; // Check if iconHrefElement exists
+      const iconHrefElement = iconStyle.querySelector('href');
+      const iconHref = iconHrefElement ? iconHrefElement.textContent : '';
       
       const locationDiv = document.createElement('div');
       locationDiv.classList.add('location');
