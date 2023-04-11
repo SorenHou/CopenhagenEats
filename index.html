@@ -247,19 +247,17 @@ async function fetchLocationDataFromKml() {
           infowindow.open(map, marker);
         });
 
-        allLocations.push({ locationDiv });
-        allMarkers.push(marker);
+            allLocations.push({ locationDiv });
+    allMarkers.push(marker);
+  });
 
-        }
+  // Add event listeners for checkboxes
+  document.getElementById('price-0-300').addEventListener('change', filterLocations);
+  document.getElementById('price-300-600').addEventListener('change', filterLocations);
+  document.getElementById('price-600-plus').addEventListener('change', filterLocations);
 
-
-// Add event listeners for checkboxes
-document.getElementById('price-0-300').addEventListener('change', filterLocations);
-document.getElementById('price-300-600').addEventListener('change', filterLocations);
-document.getElementById('price-600-plus').addEventListener('change', filterLocations);
-
-filterLocations();
-} 
+  filterLocations();
+}); // Move this closing bracket here
 
 let map;
 
