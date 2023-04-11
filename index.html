@@ -161,10 +161,17 @@ async function fetchLocationDataFromKml() {
 
       // Load the Google Maps API script
     </script>
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTV1aLFYT4vIK6FhFJnqRflsrtRGpbd1I&callback=initMap"
-    ></script>
+<script>
+  function loadGoogleMapsApi() {
+    const script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTV1aLFYT4vIK6FhFJnqRflsrtRGpbd1I&callback=initMap';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+
+  window.addEventListener('DOMContentLoaded', loadGoogleMapsApi);
+</script>
+
   </body>
 </html>
