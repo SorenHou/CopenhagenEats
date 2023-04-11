@@ -145,6 +145,9 @@
 
     <script>
 
+      const allLocations = [];
+      const allMarkers = [];
+      
       function filterLocations() {
   const showPrice0to300 = document.getElementById('price-0-300').checked;
   const showPrice300to600 = document.getElementById('price-300-600').checked;
@@ -247,6 +250,15 @@ async function fetchLocationDataFromKml() {
     }
   });
 });
+
+  allLocations.push({ locationDiv });
+  allMarkers.push(marker);
+});
+
+// Add event listeners for checkboxes
+document.getElementById('price-0-300').addEventListener('change', filterLocations);
+document.getElementById('price-300-600').addEventListener('change', filterLocations);
+document.getElementById('price-600-plus').addEventListener('change', filterLocations);
 
 filterLocations();
 } 
