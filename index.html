@@ -131,12 +131,17 @@ async function fetchLocationDataFromKml() {
         const locationsPane = document.getElementById('locations-pane');
         locationsPane.appendChild(locationDiv);
 
+        const iconSize = new google.maps.Size(32, 32); // Adjust these values to change the icon size
         const marker = new google.maps.Marker({
           position: locationCoords,
           map: map,
           title: name,
-          icon: iconHref,
+          icon: {
+            url: iconHref,
+            scaledSize: iconSize,
+          },
         });
+
 
         const infowindow = new google.maps.InfoWindow({
           content: `<h3>${name}</h3><p>${description}</p>`,
