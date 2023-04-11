@@ -73,6 +73,29 @@
     line-height: 1.2; /* Adjust the line-height for the description text */
     margin-top: 5px 0; /* Remove space above the header p */
   }
+  
+  .filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filter-item {
+  width: 33%;
+  display: flex;
+  align-items: center;
+}
+
+.filter-item input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.filter-item img {
+  width: 24px; /* Adjust this value to change the icon size */
+  height: 24px; /* Adjust this value to change the icon size */
+  margin-right: 5px;
+}
+  
 </style>
 
   </head>
@@ -83,24 +106,30 @@
     </header>
 
     <div class="main-container">
-      <div id="map"></div>
-      <div id="locations-pane">
-        <div id="filter-container">
-          <label>
-            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK">
-            <input type="checkbox" id="price-0-300" checked> 0-300 DKK
-          </label>
-          <label>
-            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK">
-            <input type="checkbox" id="price-300-600" checked> 300-600 DKK
-          </label>
-          <label>
-            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK">
-            <input type="checkbox" id="price-600-plus" checked> 600+ DKK
-          </label>
-        </div>
-      </div>
+        <div class="filter-container">
+    <div class="filter-item">
+      <input type="checkbox" id="price-0-300" checked />
+      <label for="price-0-300">
+        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
+        0-300 DKK
+      </label>
     </div>
+    <div class="filter-item">
+      <input type="checkbox" id="price-300-600" checked />
+      <label for="price-300-600">
+        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
+        300-600 DKK
+      </label>
+    </div>
+    <div class="filter-item">
+      <input type="checkbox" id="price-600-plus" checked />
+      <label for="price-600-plus">
+        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
+        600+ DKK
+      </label>
+    </div>
+  </div>
+ </div>
 
     <script>
 
