@@ -12,7 +12,7 @@
         </Icon>
       </IconStyle>
       <BalloonStyle>
-        <text><![CDATA[<h3>$[name]</h3>]]></text>
+        <text><![CDATA[<h3>$[name]</h3><p>$[description]</p>]]></text>
       </BalloonStyle>
     </Style>
     <Style id="yellow-icon-style">
@@ -24,7 +24,7 @@
         </Icon>
       </IconStyle>
       <BalloonStyle>
-        <text><![CDATA[<h3>$[name]</h3>]]></text>
+        <text><![CDATA[<h3>$[name]</h3><p>$[description]</p>]]></text>
       </BalloonStyle>
     </Style>
     <Style id="blue-icon-style">
@@ -36,7 +36,7 @@
         </Icon>
       </IconStyle>
       <BalloonStyle>
-        <text><![CDATA[<h3>$[name]</h3>]]></text>
+        <text><![CDATA[<h3>$[name]</h3><p>$[description]</p>]]></text>
       </BalloonStyle>
     </Style>
     <Folder>
