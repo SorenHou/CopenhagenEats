@@ -89,17 +89,23 @@ async function fetchLocationDataFromKml() {
   folders.forEach((folder, folderIndex) => {
     const placemarks = folder.querySelectorAll('Placemark');
     console.log(`Folder ${folderIndex + 1} Placemarks:`, placemarks.length); // Added console log
-    placemarks.forEach((placemark) => {
-      const name = placemark.querySelector('name').textContent;
-      const description = placemark.querySelector('description').textContent;
-      const coordinatesText = placemark.querySelector('coordinates').textContent;
+  placemarks.forEach((placemark) => {
+    const nameElement = placemark.querySelector('name');
+    const descriptionElement = placemark.querySelector('description');
+    const coordinatesElement = placemark.querySelector('coordinates');
+    const styleUrlElement = placemark.querySelector('styleUrl');
+
+    if (nameElement && descriptionElement && coordinatesElement && styleUrlElement) {
+      const name = nameElement.textContent;
+      const description = descriptionElement.textContent;
+      const coordinatesText = coordinatesElement.textContent;
       const coordinatesArray = coordinatesText.split(',').map(parseFloat);
       const locationCoords = {
         lat: coordinatesArray[1],
         lng: coordinatesArray[0],
       };
 
-      const styleUrl = placemark.querySelector('styleUrl').textContent;
+      const styleUrl = styleUrlElement.textContent;
       const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
       const iconHrefElement = iconStyle.querySelector('href'); // Changed variable name
       const iconHref = iconHrefElement ? iconHrefElement.textContent : ''; // Check if iconHrefElement exists
