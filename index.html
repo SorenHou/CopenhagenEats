@@ -76,14 +76,15 @@
   
   .filter-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 
 .filter-item {
-  width: 33%;
+  width: 100%;
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .filter-item input[type="checkbox"] {
@@ -95,41 +96,52 @@
   height: 24px; /* Adjust this value to change the icon size */
   margin-right: 5px;
 }
+
+@media (min-width: 768px) {
+  .filter-item {
+    width: 33%;
+  }
+}
+
   
 </style>
 
   </head>
   <body>
     <header>
-      <h1>Copenhagen Eats</h1>
-      <p>Discover great places to eat in Copenhagen</p>
-    </header>
+  <h1>Copenhagen Eats</h1>
+  <p>Discover great places to eat in Copenhagen</p>
+</header>
 
-    <div class="main-container">
-        <div class="filter-container">
-    <div class="filter-item">
-      <input type="checkbox" id="price-0-300" checked />
-      <label for="price-0-300">
-        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
-        0-300 DKK
-      </label>
+<div class="main-container">
+  <div id="map"></div>
+  <div id="locations-pane">
+    <div class="filter-container">
+      <div class="filter-item">
+        <input type="checkbox" id="price-0-300" checked />
+        <label for="price-0-300">
+          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
+          0-300 DKK
+        </label>
+      </div>
+      <div class="filter-item">
+        <input type="checkbox" id="price-300-600" checked />
+        <label for="price-300-600">
+          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
+          300-600 DKK
+        </label>
+      </div>
+      <div class="filter-item">
+        <input type="checkbox" id="price-600-plus" checked />
+        <label for="price-600-plus">
+          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
+          600+ DKK
+        </label>
+      </div>
     </div>
-    <div class="filter-item">
-      <input type="checkbox" id="price-300-600" checked />
-      <label for="price-300-600">
-        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
-        300-600 DKK
-      </label>
-    </div>
-    <div class="filter-item">
-      <input type="checkbox" id="price-600-plus" checked />
-      <label for="price-600-plus">
-        <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
-        600+ DKK
-      </label>
-    </div>
+    <!-- Rest of your locations-pane content -->
   </div>
- </div>
+</div>
 
     <script>
 
