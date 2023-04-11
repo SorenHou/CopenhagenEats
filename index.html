@@ -53,11 +53,20 @@
   }
   
   /* Increase the font size of the header text and reduce line-height */
+
   header h1 {
-    font-size: 100px;
-    line-height: 0.8; /* Adjust the line-height to control the space around the header text */
-    margin-top: 0; /* Remove space above the header h1 */
+    font-size: 4vw; /* Use viewport width units (vw) for dynamic scaling */
+    line-height: 0.8;
+    margin-top: 0;
   }
+
+  /* Larger font size for larger screens */
+  @media (min-width: 768px) {
+    header h1 {
+      font-size: 64px; /* Set a fixed font size for screens wider than 768px */
+    }
+  }
+
   
   header p {
     font-size: 18px;
