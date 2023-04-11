@@ -89,26 +89,26 @@ async function fetchLocationDataFromKml() {
   folders.forEach((folder, folderIndex) => {
     const placemarks = folder.querySelectorAll('Placemark');
     console.log(`Folder ${folderIndex + 1} Placemarks:`, placemarks.length); // Added console log
-  placemarks.forEach((placemark) => {
-    const nameElement = placemark.querySelector('name');
-    const descriptionElement = placemark.querySelector('description');
-    const coordinatesElement = placemark.querySelector('coordinates');
-    const styleUrlElement = placemark.querySelector('styleUrl');
+    placemarks.forEach((placemark) => {
+      const nameElement = placemark.querySelector('name');
+      const descriptionElement = placemark.querySelector('description');
+      const coordinatesElement = placemark.querySelector('coordinates');
+      const styleUrlElement = placemark.querySelector('styleUrl');
 
-    if (nameElement && coordinatesElement && styleUrlElement) {
-      const name = nameElement.textContent;
-      const description = descriptionElement ? descriptionElement.textContent : ''; // Set an empty string if no description is available
-      const coordinatesText = coordinatesElement.textContent;
-      const coordinatesArray = coordinatesText.split(',').map(parseFloat);
-      const locationCoords = {
-        lat: coordinatesArray[1],
-        lng: coordinatesArray[0],
-      };
+      if (nameElement && coordinatesElement && styleUrlElement) {
+        const name = nameElement.textContent;
+        const description = descriptionElement ? descriptionElement.textContent : ''; // Set an empty string if no description is available
+        const coordinatesText = coordinatesElement.textContent;
+        const coordinatesArray = coordinatesText.split(',').map(parseFloat);
+        const locationCoords = {
+          lat: coordinatesArray[1],
+          lng: coordinatesArray[0],
+        };
 
-      const styleUrl = styleUrlElement.textContent;
-      const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
-      const iconHrefElement = iconStyle.querySelector('href');
-      const iconHref = iconHrefElement ? iconHrefElement.textContent : '';
+        const styleUrl = styleUrlElement.textContent;
+        const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
+        const iconHrefElement = iconStyle.querySelector('href');
+        const iconHref = iconHrefElement ? iconHrefElement.textContent : '';
       
       const locationDiv = document.createElement('div');
       locationDiv.classList.add('location');
@@ -142,7 +142,7 @@ async function fetchLocationDataFromKml() {
 
       marker.addListener('click', () => {
         infowindow.open(map, marker);
-      });
+      }
     });
   });
 }
