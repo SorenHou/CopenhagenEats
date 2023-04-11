@@ -237,18 +237,22 @@ async function fetchLocationDataFromKml() {
         });
 
 
-        const infowindow = new google.maps.InfoWindow({
-          content: `<h3>${name}</h3><p>${description}</p>`,
-        });
+      const infowindow = new google.maps.InfoWindow({
+        content: `<h3>${name}</h3><p>${description}</p>`,
+      });
 
-        marker.addListener('click', () => {
-          infowindow.open(map, marker);
-        });
-      }
-    });
+      marker.addListener('click', () => {
+        infowindow.open(map, marker);
+      });
+    }
   });
-}    
-      let map;
+});
+
+filterLocations();
+} 
+
+let map;
+
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
