@@ -92,54 +92,42 @@
         });
       }
       
-      async function fetchLocationData() {
-        const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFileJSON.json');
-        const data = await response.json();
-        const locationsPane = document.getElementById('locations-pane');
-        const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: { lat: 55.6761, lng: 12.5683 },
-        });
-        const infowindow = new google.maps.InfoWindow();
-
-        data.features.forEach((feature) => {
-          const locationDiv = document.createElement('div');
-          locationDiv.classList.add('location');
-
-          const locationName = document.createElement('h3');
-          locationName.textContent = feature.properties.name;
-          locationDiv.appendChild(locationName);
-
-          const locationDescription = document.createElement('p');
-          locationDescription.textContent = feature.properties.description;
-          locationDiv.appendChild(locationDescription);
-
-          // Add click event listener to each location's div
-          locationDiv.addEventListener('click', () => {
-            // Get the location's coordinates from the feature's geometry
-            const locationCoords = {
-              lat: feature.geometry.coordinates[1],
-              lng: feature.geometry.coordinates[0],
-            };
-            // Update the map's center and zoom level to focus on the clicked location
-            map.setCenter(locationCoords);
-            map.setZoom(16);
-
-            // Open an info window at the clicked location with the location name and description
-            const contentString = `
-              <div>
-                <h3>${feature.properties.name}</h3>
-                <p>${feature.properties.description}</p>
-              </div>
-            `;
-            infowindow.setContent(contentString);
-            infowindow.setPosition(locationCoords);
-            infowindow.open(map);
+        async function fetchLocationData() {
+          const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFileJSON.json');
+          const data = await response.json();
+          const locationsPane = document.getElementById('locations-pane');
+          const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: { lat: 55.6761, lng: 12.5683 },
           });
 
-          locationsPane.appendChild(locationDiv);
-        });
-      }
+          data.features.forEach((feature) => {
+            const locationDiv = document.createElement('div');
+            locationDiv.classList.add('location');
+
+            const locationName = document.createElement('h3');
+            locationName.textContent = feature.properties.name;
+            locationDiv.appendChild(locationName);
+
+            const locationDescription = document.createElement('p');
+            locationDescription.textContent = feature.properties.description;
+            locationDiv.appendChild(locationDescription);
+
+            // Add click event listener to each location's div
+            locationDiv.addEventListener('click', () => {
+              // Get the location's coordinates from the feature's geometry
+              const locationCoords = {
+                lat: feature.geometry.coordinates[1],
+                lng: feature.geometry.coordinates[0],
+              };
+              // Update the map's center and zoom level to focus on the clicked location
+              map.setCenter(locationCoords);
+              map.setZoom(16);
+            });
+
+            locationsPane.appendChild(locationDiv);
+          });
+        }
 
       // Fetch location data when the page loads
       window.addEventListener('load', fetchLocationData);
