@@ -247,35 +247,25 @@ async function fetchLocationDataFromKml() {
           infowindow.open(map, marker);
         });
 
-            allLocations.push({ locationDiv });
+    allLocations.push({ locationDiv });
     allMarkers.push(marker);
-  });
 
-  // Add event listeners for checkboxes
-  document.getElementById('price-0-300').addEventListener('change', filterLocations);
-  document.getElementById('price-300-600').addEventListener('change', filterLocations);
-  document.getElementById('price-600-plus').addEventListener('change', filterLocations);
-
-  filterLocations();
-}); // Move this closing bracket here
-
-let map;
-
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
-        });
-        
-        fetchLocationDataFromKml();
-      
-           // Add event listeners for checkboxes
+    // Add event listeners for checkboxes
     document.getElementById('price-0-300').addEventListener('change', filterLocations);
     document.getElementById('price-300-600').addEventListener('change', filterLocations);
     document.getElementById('price-600-plus').addEventListener('change', filterLocations);
-      
-      }
+  }
+
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
+    });
+
+    fetchLocationDataFromKml();
+  }
 
       // Load the Google Maps API script
     </script>
