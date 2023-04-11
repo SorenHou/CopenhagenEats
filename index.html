@@ -79,18 +79,51 @@
     </div>
 
     <script>
-      function initMap() {
+        function initMap() {
         const map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
         });
 
+        // Create a KML layer to display the polygon and add it to the map
         const kmlLayer = new google.maps.KmlLayer({
           url: 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml',
           map: map,
           preserveViewport: true,
         });
+
+        // Create an object to hold icon URLs for each category
+        const icons = {
+          'Red': 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/red-dot.png',
+          'Yellow': 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/yellow-dot.png',
+          'Blue': 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/blue-dot.png',
+        };
+
+        // Create a marker for each location and add it to the map
+        const markerBounds = new google.maps.LatLngBounds();
+        data.features.forEach((feature) => {
+          const locationCoords = {
+            lat: feature.geometry.coordinates[1],
+            lng: feature.geometry.coordinates[0],
+          };
+          const icon = icons[feature.properties.category];
+          const marker = new google.maps.Marker({
+            position: locationCoords,
+            map: map,
+            title: feature.properties.name,
+            icon: icon,
+          });
+          const infowindow = new google.maps.InfoWindow({
+            content: `<h3>${feature.properties.name}</h3><p>${feature.properties.description}</p>`,
+          });
+          marker.addListener('click', () => {
+            infowindow.open(map, marker);
+          });
+          markerBounds.extend(locationCoords);
+        });
+        map.fitBounds(markerBounds);
       }
+
       
         async function fetchLocationData() {
           const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFileJSON.json');
