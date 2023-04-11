@@ -66,7 +66,7 @@
 </style>
 
 
-  </head>
+</head>
   <body>
     <header>
       <h1>Copenhagen Eats</h1>
@@ -89,7 +89,6 @@
           url: 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml',
           map: map,
           preserveViewport: true,
-          zoom: 12, // Set the zoom level for the KML layer
         });
       }
       
@@ -101,6 +100,7 @@
           zoom: 12,
           center: { lat: 55.6761, lng: 12.5683 },
         });
+        const infowindow = new google.maps.InfoWindow();
 
         data.features.forEach((feature) => {
           const locationDiv = document.createElement('div');
@@ -124,6 +124,17 @@
             // Update the map's center and zoom level to focus on the clicked location
             map.setCenter(locationCoords);
             map.setZoom(16);
+
+            // Open an info window at the clicked location with the location name and description
+            const contentString = `
+              <div>
+                <h3>${feature.properties.name}</h3>
+                <p>${feature.properties.description}</p>
+              </div>
+            `;
+            infowindow.setContent(contentString);
+            infowindow.setPosition(locationCoords);
+            infowindow.open(map);
           });
 
           locationsPane.appendChild(locationDiv);
