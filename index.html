@@ -77,6 +77,64 @@
     </div>
 
     <script>
+      
+      async function fetchLocationDataFromKml() {
+      const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml');
+      const data = await response.text();
+      const parser = new DOMParser();
+      const kml = parser.parseFromString(data, 'application/xml');
+
+      const placemarks = kml.querySelectorAll('Placemark');
+      placemarks.forEach((placemark) => {
+        const name = placemark.querySelector('name').textContent;
+        const description = placemark.querySelector('description').textContent;
+        const coordinatesText = placemark.querySelector('coordinates').textContent;
+        const coordinatesArray = coordinatesText.split(',').map(parseFloat);
+        const locationCoords = {
+          lat: coordinatesArray[1],
+          lng: coordinatesArray[0],
+        };
+
+        const styleUrl = placemark.querySelector('styleUrl').textContent;
+        const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
+        const iconHref = iconStyle.querySelector('href').textContent;
+
+        const locationDiv = document.createElement('div');
+        locationDiv.classList.add('location');
+
+        const locationName = document.createElement('h3');
+        locationName.textContent = name;
+        locationDiv.appendChild(locationName);
+
+        const locationDescription = document.createElement('p');
+        locationDescription.textContent = description;
+        locationDiv.appendChild(locationDescription);
+
+        locationDiv.addEventListener('click', () => {
+          map.setCenter(locationCoords);
+          map.setZoom(16);
+        });
+
+        const locationsPane = document.getElementById('locations-pane');
+        locationsPane.appendChild(locationDiv);
+
+        const marker = new google.maps.Marker({
+          position: locationCoords,
+          map: map,
+          title: name,
+          icon: iconHref,
+        });
+
+        const infowindow = new google.maps.InfoWindow({
+          content: `<h3>${name}</h3><p>${description}</p>`,
+        });
+
+        marker.addListener('click', () => {
+          infowindow.open(map, marker);
+        });
+      });
+    }
+    
       let map;
 
       function initMap() {
@@ -85,7 +143,7 @@
           center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
         });
         
-        fetchLocationData();
+        fetchLocationDataFromKml();
       }
       
       async function fetchLocationData() {
