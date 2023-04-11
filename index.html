@@ -87,10 +87,10 @@ async function fetchLocationDataFromKml() {
   const kml = parser.parseFromString(data, 'application/xml');
 
   const folders = kml.querySelectorAll('Folder');
-  console.log('Folders:', folders.length); // Added console log
+  console.log('Folders:', folders.length);
   folders.forEach((folder, folderIndex) => {
     const placemarks = folder.querySelectorAll('Placemark');
-    console.log(`Folder ${folderIndex + 1} Placemarks:`, placemarks.length); // Added console log
+    console.log(`Folder ${folderIndex + 1} Placemarks:`, placemarks.length);
     placemarks.forEach((placemark) => {
       const nameElement = placemark.querySelector('name');
       const descriptionElement = placemark.querySelector('description');
@@ -99,7 +99,7 @@ async function fetchLocationDataFromKml() {
 
       if (nameElement && coordinatesElement && styleUrlElement) {
         const name = nameElement.textContent;
-        const description = descriptionElement ? descriptionElement.textContent : ''; // Set an empty string if no description is available
+        const description = descriptionElement ? descriptionElement.textContent : '';
         const coordinatesText = coordinatesElement.textContent;
         const coordinatesArray = coordinatesText.split(',').map(parseFloat);
         const locationCoords = {
@@ -111,45 +111,44 @@ async function fetchLocationDataFromKml() {
         const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
         const iconHrefElement = iconStyle.querySelector('href');
         const iconHref = iconHrefElement ? iconHrefElement.textContent : '';
-      
-      const locationDiv = document.createElement('div');
-      locationDiv.classList.add('location');
 
-      const locationName = document.createElement('h3');
-      locationName.textContent = name;
-      locationDiv.appendChild(locationName);
+        const locationDiv = document.createElement('div');
+        locationDiv.classList.add('location');
 
-      const locationDescription = document.createElement('p');
-      locationDescription.textContent = description;
-      locationDiv.appendChild(locationDescription);
+        const locationName = document.createElement('h3');
+        locationName.textContent = name;
+        locationDiv.appendChild(locationName);
 
-      locationDiv.addEventListener('click', () => {
-        map.setCenter(locationCoords);
-        map.setZoom(16);
-      });
+        const locationDescription = document.createElement('p');
+        locationDescription.textContent = description;
+        locationDiv.appendChild(locationDescription);
 
-      const locationsPane = document.getElementById('locations-pane');
-      locationsPane.appendChild(locationDiv);
+        locationDiv.addEventListener('click', () => {
+          map.setCenter(locationCoords);
+          map.setZoom(16);
+        });
 
-      const marker = new google.maps.Marker({
-        position: locationCoords,
-        map: map,
-        title: name,
-        icon: iconHref,
-      });
+        const locationsPane = document.getElementById('locations-pane');
+        locationsPane.appendChild(locationDiv);
 
-      const infowindow = new google.maps.InfoWindow({
-        content: `<h3>${name}</h3><p>${description}</p>`,
-      });
+        const marker = new google.maps.Marker({
+          position: locationCoords,
+          map: map,
+          title: name,
+          icon: iconHref,
+        });
 
-      marker.addListener('click', () => {
-        infowindow.open(map, marker);
-      });
+        const infowindow = new google.maps.InfoWindow({
+          content: `<h3>${name}</h3><p>${description}</p>`,
+        });
+
+        marker.addListener('click', () => {
+          infowindow.open(map, marker);
+        });
+      }
     });
   });
-}
-
-    
+}    
       let map;
 
       function initMap() {
