@@ -84,10 +84,54 @@
 
     <div class="main-container">
       <div id="map"></div>
-      <div id="locations-pane"></div>
+      <div id="locations-pane">
+        <div id="filter-container">
+          <label>
+            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK">
+            <input type="checkbox" id="price-0-300" checked> 0-300 DKK
+          </label>
+          <label>
+            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK">
+            <input type="checkbox" id="price-300-600" checked> 300-600 DKK
+          </label>
+          <label>
+            <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK">
+            <input type="checkbox" id="price-600-plus" checked> 600+ DKK
+          </label>
+        </div>
+      </div>
     </div>
 
     <script>
+
+      function filterLocations() {
+  const showPrice0to300 = document.getElementById('price-0-300').checked;
+  const showPrice300to600 = document.getElementById('price-300-600').checked;
+  const showPrice600Plus = document.getElementById('price-600-plus').checked;
+
+  const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
+
+  // Iterate over all locations and markers
+  for (let i = 0; i < allLocations.length; i++) {
+    const location = allLocations[i];
+    const marker = allMarkers[i];
+
+    const iconHref = marker.getIcon().url;
+
+    let shouldShow = false;
+    if (iconHref.includes('yellow') && (showPrice0to300 || noFiltersSelected)) {
+      shouldShow = true;
+    } else if (iconHref.includes('blue') && (showPrice300to600 || noFiltersSelected)) {
+      shouldShow = true;
+    } else if (iconHref.includes('red') && (showPrice600Plus || noFiltersSelected)) {
+      shouldShow = true;
+    }
+
+    location.locationDiv.style.display = shouldShow ? 'block' : 'none';
+    marker.setVisible(shouldShow);
+  }
+}
+
       
 async function fetchLocationDataFromKml() {
   const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml');
