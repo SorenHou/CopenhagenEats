@@ -84,12 +84,6 @@
           zoom: 12,
           center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
         });
-
-        const kmlLayer = new google.maps.KmlLayer({
-          url: 'https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml',
-          map: map,
-          preserveViewport: true,
-        });
         
         fetchLocationData();
       }
@@ -149,7 +143,6 @@
       }
 
       // Load the Google Maps API script
-      
     </script>
     <script
       async
