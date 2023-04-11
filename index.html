@@ -101,8 +101,9 @@ async function fetchLocationDataFromKml() {
 
       const styleUrl = placemark.querySelector('styleUrl').textContent;
       const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
-      const iconHref = iconStyle.querySelector('href').textContent;
-
+      const iconHrefElement = iconStyle.querySelector('href'); // Changed variable name
+      const iconHref = iconHrefElement ? iconHrefElement.textContent : ''; // Check if iconHrefElement exists
+      
       const locationDiv = document.createElement('div');
       locationDiv.classList.add('location');
 
