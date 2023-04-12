@@ -152,8 +152,6 @@
   const showPrice300to600 = document.getElementById('price-300-600').checked;
   const showPrice600Plus = document.getElementById('price-600-plus').checked;
 
-  const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
-
   // Iterate over all locations and markers
   for (let i = 0; i < allLocations.length; i++) {
     const location = allLocations[i];
@@ -163,11 +161,11 @@
     const iconHref = marker.getIcon().url;
 
     let shouldShow = false;
-    if (iconHref.includes('yellow') && (showPrice0to300 || noFiltersSelected)) {
+    if (iconHref.includes('yellow') && showPrice0to300) {
       shouldShow = true;
-    } else if (iconHref.includes('blue') && (showPrice300to600 || noFiltersSelected)) {
+    } else if (iconHref.includes('blue') && showPrice300to600) {
       shouldShow = true;
-    } else if (iconHref.includes('red') && (showPrice600Plus || noFiltersSelected)) {
+    } else if (iconHref.includes('red') && showPrice600Plus) {
       shouldShow = true;
     }
 
@@ -179,6 +177,7 @@
     }
   }
 }
+
 
 
   async function fetchLocationDataFromKml() {
