@@ -247,12 +247,15 @@
         allLocations.push({ locationDiv });
         allMarkers.push(marker);
 
+
+      }
+    });
+
         // Add event listeners for checkboxes
         document.getElementById('price-0-300').addEventListener('change', filterLocations);
         document.getElementById('price-300-600').addEventListener('change', filterLocations);
         document.getElementById('price-600-plus').addEventListener('change', filterLocations);
-      }
-    });
+
   });
 }
 
