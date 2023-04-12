@@ -145,34 +145,41 @@
 <script>
   const allLocations = [];
   const allMarkers = [];
+  const allInfoWindows = [];
 
   function filterLocations() {
-    const showPrice0to300 = document.getElementById('price-0-300').checked;
-    const showPrice300to600 = document.getElementById('price-300-600').checked;
-    const showPrice600Plus = document.getElementById('price-600-plus').checked;
+  const showPrice0to300 = document.getElementById('price-0-300').checked;
+  const showPrice300to600 = document.getElementById('price-300-600').checked;
+  const showPrice600Plus = document.getElementById('price-600-plus').checked;
 
-    const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
+  const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
 
-    // Iterate over all locations and markers
-    for (let i = 0; i < allLocations.length; i++) {
-      const location = allLocations[i];
-      const marker = allMarkers[i];
+  // Iterate over all locations and markers
+  for (let i = 0; i < allLocations.length; i++) {
+    const location = allLocations[i];
+    const marker = allMarkers[i];
+    const infowindow = allInfoWindows[i];
 
-      const styleUrl = allLocations[i].styleUrl;
+    const iconHref = marker.getIcon().url;
 
-        let shouldShow = false;
-        if (styleUrl === '#yellow-icon-style' && (showPrice0to300 || noFiltersSelected)) {
-          shouldShow = true;
-        } else if (styleUrl === '#blue-icon-style' && (showPrice300to600 || noFiltersSelected)) {
-          shouldShow = true;
-        } else if (styleUrl === '#red-icon-style' && (showPrice600Plus || noFiltersSelected)) {
-          shouldShow = true;
-        }
+    let shouldShow = false;
+    if (iconHref.includes('yellow') && (showPrice0to300 || noFiltersSelected)) {
+      shouldShow = true;
+    } else if (iconHref.includes('blue') && (showPrice300to600 || noFiltersSelected)) {
+      shouldShow = true;
+    } else if (iconHref.includes('red') && (showPrice600Plus || noFiltersSelected)) {
+      shouldShow = true;
+    }
 
-      location.locationDiv.style.display = shouldShow ? 'block' : 'none';
-      marker.setVisible(shouldShow);
+    location.locationDiv.style.display = shouldShow ? 'block' : 'none';
+    marker.setVisible(shouldShow);
+
+    if (!shouldShow && infowindow.getMap() === map) {
+      infowindow.close();
     }
   }
+}
+
 
   async function fetchLocationDataFromKml() {
     const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml');
@@ -254,10 +261,9 @@
   currentInfoWindow = infowindow;
 });
 
-
         allLocations.push({ locationDiv, styleUrl });
         allMarkers.push(marker);
-
+        allInfoWindows.push(infowindow);
 
       }
     });
