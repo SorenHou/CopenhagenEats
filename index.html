@@ -169,7 +169,7 @@
           shouldShow = true;
         }
 
-      location.locationDiv.style.display = shouldShow ? 'block' : 'none';
+        location.locationDiv.style.display = shouldShow ? '' : 'none';
       marker.setVisible(shouldShow);
     }
   }
@@ -226,6 +226,7 @@
           infowindow.open(map, marker);
           currentInfoWindow = infowindow;
         });
+
 
 
           const locationsPane = document.getElementById('locations-pane');
