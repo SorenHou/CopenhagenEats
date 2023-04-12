@@ -269,12 +269,19 @@
       }
     });
   });
-}
+  // Add event listeners for checkboxes
+  document.getElementById('price-0-300').addEventListener('change', filterLocations);
+  document.getElementById('price-300-600').addEventListener('change', filterLocations);
+  document.getElementById('price-600-plus').addEventListener('change', filterLocations);
 
+}
+/*
         // Add event listeners for checkboxes
         document.getElementById('price-0-300').addEventListener('change', filterLocations);
         document.getElementById('price-300-600').addEventListener('change', filterLocations);
         document.getElementById('price-600-plus').addEventListener('change', filterLocations);
+
+*/
 
 let map;
 let currentInfoWindow = null; // Add this line
