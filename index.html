@@ -146,6 +146,42 @@
   const allLocations = [];
   const allMarkers = [];
 
+  function parseCSV(text, delimiter = ",") {
+  const rows = text.split("\n");
+  const header = rows.shift();
+  const headerColumns = header.split(delimiter);
+
+  const data = rows.map((row) => {
+    const rowData = {};
+    let start = 0;
+    let inQuotes = false;
+
+    for (let i = 0; i < headerColumns.length; i++) {
+      let end = start;
+      while (end < row.length) {
+        if (row[end] === '"' && (end === 0 || row[end - 1] !== '\\')) {
+          inQuotes = !inQuotes;
+        } else if (row[end] === delimiter && !inQuotes) {
+          break;
+        }
+        end++;
+      }
+
+      rowData[headerColumns[i]] = row
+        .slice(start, end)
+        .replace(/^"|"$/g, "")
+        .replace(/""/g, '"');
+
+      start = end + 1;
+    }
+
+    return rowData;
+  });
+
+  return data;
+}
+
+
   function filterLocations() {
     const showPrice0to300 = document.getElementById('price-0-300').checked;
     const showPrice300to600 = document.getElementById('price-300-600').checked;
@@ -179,10 +215,21 @@
   const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSsXXnPFPRmhRnIanXBwugcmPe-oZDUrD5Ka7rKfm79NHiTdoR7Bgirl0bjjWZiFo8Xzo8TbMOMSwkg/pub?gid=1752772653&single=true&output=csv';
   const response = await fetch(sheetUrl);
   const data = await response.text();
-  const rows = data.split('\n').slice(1); // Skip header row
-  
-  rows.forEach((row) => {
-    const [name, description, lat, lng, styleUrl, iconHref, website, instagram, imageUrl] = row.split(',');
+  const locationData = parseCSV(data);
+
+locationData.forEach((row) => {
+  const {
+    name,
+    description,
+    lat,
+    lng,
+    styleUrl,
+    iconHref,
+    website,
+    instagram,
+    imageUrl,
+  } = row;
+
 
     const locationCoords = {
       lat: parseFloat(lat),
