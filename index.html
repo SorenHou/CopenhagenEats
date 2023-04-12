@@ -160,14 +160,14 @@
 
     const iconHref = marker.getIcon().url;
 
-    let shouldShow = false;
-    if (iconHref.includes('yellow') && showPrice0to300) {
-      shouldShow = true;
-    } else if (iconHref.includes('blue') && showPrice300to600) {
-      shouldShow = true;
-    } else if (iconHref.includes('red') && showPrice600Plus) {
-      shouldShow = true;
-    }
+        let shouldShow = false;
+        if (styleUrl === '#yellow-icon-style' && (showPrice0to300 || noFiltersSelected)) {
+          shouldShow = true;
+        } else if (styleUrl === '#blue-icon-style' && (showPrice300to600 || noFiltersSelected)) {
+          shouldShow = true;
+        } else if (styleUrl === '#red-icon-style' && (showPrice600Plus || noFiltersSelected)) {
+          shouldShow = true;
+        }
 
     location.locationDiv.style.display = shouldShow ? 'block' : 'none';
     marker.setVisible(shouldShow);
@@ -269,19 +269,14 @@
       }
     });
   });
-  // Add event listeners for checkboxes
-  document.getElementById('price-0-300').addEventListener('change', filterLocations);
-  document.getElementById('price-300-600').addEventListener('change', filterLocations);
-  document.getElementById('price-600-plus').addEventListener('change', filterLocations);
-
 }
-/*
+
         // Add event listeners for checkboxes
         document.getElementById('price-0-300').addEventListener('change', filterLocations);
         document.getElementById('price-300-600').addEventListener('change', filterLocations);
         document.getElementById('price-600-plus').addEventListener('change', filterLocations);
 
-*/
+
 
 let map;
 let currentInfoWindow = null; // Add this line
