@@ -158,7 +158,7 @@
     const marker = allMarkers[i];
     const infowindow = allInfoWindows[i];
 
-    const iconHref = marker.getIcon().url;
+    const styleUrl = allLocations[i].styleUrl;
 
         let shouldShow = false;
         if (styleUrl === '#yellow-icon-style' && (showPrice0to300 || noFiltersSelected)) {
