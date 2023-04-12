@@ -158,16 +158,16 @@
       const location = allLocations[i];
       const marker = allMarkers[i];
 
-      const iconHref = marker.getIcon().url;
+      const styleUrl = allLocations[i].styleUrl;
 
-      let shouldShow = false;
-      if (iconHref.includes('yellow') && (showPrice0to300 || noFiltersSelected)) {
-        shouldShow = true;
-      } else if (iconHref.includes('blue') && (showPrice300to600 || noFiltersSelected)) {
-        shouldShow = true;
-      } else if (iconHref.includes('red') && (showPrice600Plus || noFiltersSelected)) {
-        shouldShow = true;
-      }
+        let shouldShow = false;
+        if (styleUrl === '#yellow-icon-style' && (showPrice0to300 || noFiltersSelected)) {
+          shouldShow = true;
+        } else if (styleUrl === '#blue-icon-style' && (showPrice300to600 || noFiltersSelected)) {
+          shouldShow = true;
+        } else if (styleUrl === '#red-icon-style' && (showPrice600Plus || noFiltersSelected)) {
+          shouldShow = true;
+        }
 
       location.locationDiv.style.display = shouldShow ? 'block' : 'none';
       marker.setVisible(shouldShow);
@@ -244,7 +244,7 @@
           infowindow.open(map, marker);
         });
 
-        allLocations.push({ locationDiv });
+        allLocations.push({ locationDiv, styleUrl });
         allMarkers.push(marker);
 
 
