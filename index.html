@@ -59,32 +59,53 @@
   const allLocations = [];
   const allMarkers = [];
 
-  function parseCSV(text, delimiter = ",") {
-  const rows = text.split("\n");
+/**
+ * Parses the given CSV text and returns an array of objects.
+ * @param {string} text - The CSV text to parse.
+ * @param {string} [delimiter=','] - The delimiter used to separate fields in the CSV.
+ * @returns {Array} An array of objects representing the rows of the CSV.
+ */
+ function parseCSV(text, delimiter = ",") {
+  // Trim any leading/trailing whitespace, split the CSV text into an array of rows
+  const rows = text.trim().split("\n");
+
+  // Remove the header row from the rows array and split it into an array of header columns
   const header = rows.shift();
   const headerColumns = header.split(delimiter);
 
+  // Map each row of the CSV file to an object
   const data = rows.map((row) => {
     const rowData = {};
     let start = 0;
     let inQuotes = false;
 
+    // Iterate through each header column
     for (let i = 0; i < headerColumns.length; i++) {
       let end = start;
+
+      // Find the end of the current field in the row
       while (end < row.length) {
+        // If the current character is a quote and is not escaped
         if (row[end] === '"' && (end === 0 || row[end - 1] !== '\\')) {
+          // Toggle the inQuotes flag
           inQuotes = !inQuotes;
         } else if (row[end] === delimiter && !inQuotes) {
+          // If the current character is the delimiter and we are not inside quotes, break the loop
           break;
         }
         end++;
       }
 
-      rowData[headerColumns[i]] = row
+      // Get the field value, remove quotes from the start and end, and unescape double quotes
+      const fieldValue = row
         .slice(start, end)
         .replace(/^"|"$/g, "")
         .replace(/""/g, '"');
 
+      // Add the field value to the rowData object using the corresponding header column as the key
+      rowData[headerColumns[i]] = fieldValue;
+
+      // Update the start position for the next field
       start = end + 1;
     }
 
