@@ -124,5 +124,9 @@ header p {
   color: #339AF0;
 }
 
+.external-link:visited {
+  color: #339AF0;
+}
+
 
 }
