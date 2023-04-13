@@ -197,7 +197,7 @@ async function fetchLocationDataFromGoogleSheets() {
 
     // Create a paragraph element for the location description and links, then add it to the div
     const locationDescription = document.createElement('p');
-    locationDescription.innerHTML = `${description}<br><a href="${website}" target="_blank">Website</a><br><a href="${instagram}" target="_blank">Instagram</a>`;
+    locationDescription.innerHTML = `${description}<br><a href="${website}" target="_blank">Website<img src="images/website.png" alt="Website icon"></a><br><a href="${instagram}" target="_blank">Instagram<img src="images/instagram.png" alt="Instagram icon"></a>`;
     locationDiv.appendChild(locationDescription);
 
     // If there's an image URL, create an img element and add it to the div

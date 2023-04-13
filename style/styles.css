@@ -97,4 +97,15 @@ header p {
     margin-top: 5px;
   }
   
+/* Remove the underline from the links */
+.location a {
+  text-decoration: none;
+}
+
+/* Add some space between the icon and the text */
+.location a img {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
 }
