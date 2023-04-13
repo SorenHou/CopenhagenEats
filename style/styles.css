@@ -87,4 +87,14 @@ header p {
   .filter-item {
     width: 33%;
   }
+
+  .icon-checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .price-description {
+    margin-top: 5px;
+  }
+  
 }
