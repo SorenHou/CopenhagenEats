@@ -1,46 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Copenhagen Eats</title>
+    <!-- Google Font: Oswald -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&display=swap" />
+    <!-- Custom styles -->
     <link rel="stylesheet" href="style/styles.css">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   </head>
-  
-  <body>
-    <header>
-  <h1>Copenhagen Eats</h1>
-  <p>Discover great places to eat in Copenhagen</p>
-</header>
 
-<div class="main-container">
-  <div id="map"></div>
-  <div id="locations-pane">
-    <div class="filter-container">
-      <div class="filter-item">
-        <input type="checkbox" id="price-0-300" checked />
-        <label for="price-0-300">
-          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
-          0-300 DKK
-        </label>
-      </div>
-      <div class="filter-item">
-        <input type="checkbox" id="price-300-600" checked />
-        <label for="price-300-600">
-          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
-          300-600 DKK
-        </label>
-      </div>
-      <div class="filter-item">
-        <input type="checkbox" id="price-600-plus" checked />
-        <label for="price-600-plus">
-          <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
-          600+ DKK
-        </label>
+  <body>
+    <!-- Header section -->
+    <header>
+      <h1>Copenhagen Eats</h1>
+      <p>Discover great places to eat in Copenhagen</p>
+    </header>
+
+    <!-- Main container -->
+    <div class="main-container">
+      <!-- Map container -->
+      <div id="map"></div>
+
+      <!-- Locations pane -->
+      <div id="locations-pane">
+        <!-- Filter by price title -->
+        <h3>Filter by price</h3>
+        <!-- Filter container -->
+        <div class="filter-container">
+          <!-- Filter item: 0-300 DKK -->
+          <div class="filter-item">
+            <input type="checkbox" id="price-0-300" checked />
+            <label for="price-0-300">
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
+              0-300 DKK
+            </label>
+          </div>
+          <!-- Filter item: 300-600 DKK -->
+          <div class="filter-item">
+            <input type="checkbox" id="price-300-600" checked />
+            <label for="price-300-600">
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
+              300-600 DKK
+            </label>
+          </div>
+          <!-- Filter item: 600+ DKK -->
+          <div class="filter-item">
+            <input type="checkbox" id="price-600-plus" checked />
+            <label for="price-600-plus">
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
+              600+ DKK
+            </label>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
 <script>
   const allLocations = [];
@@ -318,5 +331,5 @@ function loadGoogleMapsApi() {
 window.addEventListener('DOMContentLoaded', loadGoogleMapsApi);
 </script>
 
-      </body>
+</body>
 </html>
