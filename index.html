@@ -31,7 +31,7 @@
           <div class="filter-item">
             <input type="checkbox" id="price-0-300" checked />
             <label for="price-0-300">
-              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/YellowIcon.png" alt="0-300 DKK" />
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/images/YellowIcon.png" alt="0-300 DKK" />
               0-300 DKK
             </label>
           </div>
@@ -39,7 +39,7 @@
           <div class="filter-item">
             <input type="checkbox" id="price-300-600" checked />
             <label for="price-300-600">
-              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/BlueIcon.png" alt="300-600 DKK" />
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/images/BlueIcon.png" alt="300-600 DKK" />
               300-600 DKK
             </label>
           </div>
@@ -47,7 +47,7 @@
           <div class="filter-item">
             <input type="checkbox" id="price-600-plus" checked />
             <label for="price-600-plus">
-              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/RedIcon.png" alt="600+ DKK" />
+              <img src="https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/images/RedIcon.png" alt="600+ DKK" />
               600+ DKK
             </label>
           </div>
@@ -152,42 +152,55 @@
   }
 }
 
-  async function fetchLocationDataFromGoogleSheets() {
+// This asynchronous function fetches location data from a Google Sheet,
+// creates HTML elements for the locations, and adds markers with info windows on a Google Map.
+async function fetchLocationDataFromGoogleSheets() {
+  // Define the URL of the Google Sheet in CSV format
   const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSsXXnPFPRmhRnIanXBwugcmPe-oZDUrD5Ka7rKfm79NHiTdoR7Bgirl0bjjWZiFo8Xzo8TbMOMSwkg/pub?gid=1752772653&single=true&output=csv';
+
+  // Fetch the CSV data from the Google Sheet
   const response = await fetch(sheetUrl);
   const data = await response.text();
+
+  // Parse the CSV data into a usable format
   const locationData = parseCSV(data);
 
-locationData.forEach((row) => {
-  const {
-    name,
-    description,
-    lat,
-    lng,
-    styleUrl,
-    iconHref,
-    website,
-    instagram,
-    imageUrl,
-  } = row;
+  // Loop through each row of location data
+  locationData.forEach((row) => {
+    // Destructure relevant data from the row
+    const {
+      name,
+      description,
+      lat,
+      lng,
+      styleUrl,
+      iconHref,
+      website,
+      instagram,
+      imageUrl,
+    } = row;
 
-
+    // Parse the latitude and longitude as floats and store them in an object
     const locationCoords = {
       lat: parseFloat(lat),
       lng: parseFloat(lng),
     };
 
+    // Create a div element for the location and give it a class
     const locationDiv = document.createElement('div');
     locationDiv.classList.add('location');
 
+    // Create an h3 element for the location name and add it to the div
     const locationName = document.createElement('h3');
     locationName.textContent = name;
     locationDiv.appendChild(locationName);
 
+    // Create a paragraph element for the location description and links, then add it to the div
     const locationDescription = document.createElement('p');
     locationDescription.innerHTML = `${description}<br><a href="${website}" target="_blank">Website</a><br><a href="${instagram}" target="_blank">Instagram</a>`;
     locationDiv.appendChild(locationDescription);
 
+    // If there's an image URL, create an img element and add it to the div
     if (imageUrl) {
       const locationImage = document.createElement('img');
       locationImage.src = imageUrl;
@@ -195,6 +208,7 @@ locationData.forEach((row) => {
       locationDiv.appendChild(locationImage);
     }
 
+    // Add a click event listener to the div to re-center the map and open an info window
     locationDiv.addEventListener('click', () => {
       map.setCenter(locationCoords);
       map.setZoom(16);
@@ -205,9 +219,11 @@ locationData.forEach((row) => {
       currentInfoWindow = infowindow;
     });
 
+    // Append the location div to the locations pane
     const locationsPane = document.getElementById('locations-pane');
     locationsPane.appendChild(locationDiv);
 
+    // Create a Google Maps marker with a custom icon and add it to the map
     const iconSize = new google.maps.Size(32, 32); // Adjust these values to change the icon size
     const marker = new google.maps.Marker({
       position: locationCoords,
@@ -219,40 +235,51 @@ locationData.forEach((row) => {
       },
     });
 
+    // Create a Google Maps info window with the location's content
     const infowindow = new google.maps.InfoWindow({
       content: `<h3>${name}</h3><p>${description}</p><a href="${website}" target="_blank">Website</a><br><a href="${instagram}" target="_blank">Instagram</a>`,
     });
 
+    // Add a click event listener to the marker to open the info window when clicked
     marker.addListener('click', () => {
+      // If there's an open info window, close it before opening a new one
       if (currentInfoWindow) {
         currentInfoWindow.close();
       }
+      // Open the info window on the clicked marker
       infowindow.open(map, marker);
+      // Set the current info window to the one that's just been opened
       currentInfoWindow = infowindow;
     });
 
+    // Push the location div and style URL to the allLocations array
     allLocations.push({ locationDiv, styleUrl });
+    // Push the marker to the allMarkers array
     allMarkers.push(marker);
   });
 }
 
-        // Add event listeners for checkboxes
-        document.getElementById('price-0-300').addEventListener('change', filterLocations);
-        document.getElementById('price-300-600').addEventListener('change', filterLocations);
-        document.getElementById('price-600-plus').addEventListener('change', filterLocations);
+// Add change event listeners to the checkboxes for filtering locations by price range
+document.getElementById('price-0-300').addEventListener('change', filterLocations);
+document.getElementById('price-300-600').addEventListener('change', filterLocations);
+document.getElementById('price-600-plus').addEventListener('change', filterLocations);
 
+// Declare global variables for the map and the current info window
 let map;
 let currentInfoWindow;
 
-
+// Initialize the Google Map with a default zoom level and center on Copenhagen
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
   });
+
+  // Fetch location data from the Google Sheet and display it on the map
   fetchLocationDataFromGoogleSheets();
 }
 
+// Load the Google Maps API script asynchronously and defer its execution
 function loadGoogleMapsApi() {
   const script = document.createElement('script');
   script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDTV1aLFYT4vIK6FhFJnqRflsrtRGpbd1I&callback=initMap';
@@ -261,6 +288,7 @@ function loadGoogleMapsApi() {
   document.body.appendChild(script);
 }
 
+// Add an event listener to load the Google Maps API script when the DOM is fully loaded
 window.addEventListener('DOMContentLoaded', loadGoogleMapsApi);
 </script>
 
