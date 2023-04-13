@@ -113,8 +113,14 @@ header p {
 }
 
 .icon-left {
+  height: 1em;
   margin-right: 8px;
+  vertical-align: middle;
 }
 
+.external-link {
+  text-decoration: none;
+  vertical-align: middle;
+}
 
 }
