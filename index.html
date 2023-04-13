@@ -115,35 +115,42 @@
   return data;
 }
 
+/**
+ * Filters locations and markers based on the selected price range.
+ * Updates the visibility of each location and its corresponding marker.
+ */
+ function filterLocations() {
+  // Get the checkbox states for each price range
+  const showPrice0to300 = document.getElementById("price-0-300").checked;
+  const showPrice300to600 = document.getElementById("price-300-600").checked;
+  const showPrice600Plus = document.getElementById("price-600-plus").checked;
 
-  function filterLocations() {
-    const showPrice0to300 = document.getElementById('price-0-300').checked;
-    const showPrice300to600 = document.getElementById('price-300-600').checked;
-    const showPrice600Plus = document.getElementById('price-600-plus').checked;
+  // Determine if no filters are selected
+  const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
 
-    const noFiltersSelected = !showPrice0to300 && !showPrice300to600 && !showPrice600Plus;
+  // Iterate over all locations and markers
+  for (let i = 0; i < allLocations.length; i++) {
+    const location = allLocations[i];
+    const marker = allMarkers[i];
+    const styleUrl = location.styleUrl;
 
-    // Iterate over all locations and markers
-    for (let i = 0; i < allLocations.length; i++) {
-      const location = allLocations[i];
-      const marker = allMarkers[i];
+    let shouldShow = false;
 
-      const styleUrl = allLocations[i].styleUrl;
-
-        let shouldShow = false;
-        if (styleUrl === '#yellow-icon-style' && (showPrice0to300 || noFiltersSelected)) {
-          shouldShow = true;
-        } else if (styleUrl === '#blue-icon-style' && (showPrice300to600 || noFiltersSelected)) {
-          shouldShow = true;
-        } else if (styleUrl === '#red-icon-style' && (showPrice600Plus || noFiltersSelected)) {
-          shouldShow = true;
-        }
-
-        location.locationDiv.style.display = shouldShow ? '' : 'none';
-      marker.setVisible(shouldShow);
+    // Check if the location's style URL matches the selected price range or if no filters are selected
+    if (
+      (styleUrl === "#yellow-icon-style" && showPrice0to300) ||
+      (styleUrl === "#blue-icon-style" && showPrice300to600) ||
+      (styleUrl === "#red-icon-style" && showPrice600Plus) ||
+      noFiltersSelected
+    ) {
+      shouldShow = true;
     }
-  }
 
+    // Update the location's visibility based on the 'shouldShow' flag
+    location.locationDiv.style.display = shouldShow ? "" : "none";
+    marker.setVisible(shouldShow);
+  }
+}
 
   async function fetchLocationDataFromGoogleSheets() {
   const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSsXXnPFPRmhRnIanXBwugcmPe-oZDUrD5Ka7rKfm79NHiTdoR7Bgirl0bjjWZiFo8Xzo8TbMOMSwkg/pub?gid=1752772653&single=true&output=csv';
@@ -229,100 +236,6 @@ locationData.forEach((row) => {
   });
 }
 
-/*
-  async function fetchLocationDataFromKml() {
-    const response = await fetch('https://raw.githubusercontent.com/SorenHou/CopenhagenEats/main/MapFile.kml');
-    const data = await response.text();
-    const parser = new DOMParser();
-    const kml = parser.parseFromString(data, 'application/xml');
-
-    const folders = kml.querySelectorAll('Folder');
-    console.log('Folders:', folders.length);
-    folders.forEach((folder, folderIndex) => {
-      const placemarks = folder.querySelectorAll('Placemark');
-      console.log(`Folder ${folderIndex + 1} Placemarks:`, placemarks.length);
-      placemarks.forEach((placemark) => {
-        const nameElement = placemark.querySelector('name');
-        const descriptionElement = placemark.querySelector('description');
-        const coordinatesElement = placemark.querySelector('coordinates');
-        const styleUrlElement = placemark.querySelector('styleUrl');
-
-        if (nameElement && coordinatesElement && styleUrlElement) {
-          const name = nameElement.textContent;
-          const description = descriptionElement ? descriptionElement.textContent : '';
-          const coordinatesText = coordinatesElement.textContent;
-          const coordinatesArray = coordinatesText.split(',').map(parseFloat);
-          const locationCoords = {
-            lat: coordinatesArray[1],
-            lng: coordinatesArray[0],
-          };
-
-          const styleUrl = styleUrlElement.textContent;
-          const iconStyle = kml.querySelector(`Style[id="${styleUrl.slice(1)}"]`);
-          const iconHrefElement = iconStyle.querySelector('href');
-          const iconHref = iconHrefElement ? iconHrefElement.textContent : '';
-
-          const locationDiv = document.createElement('div');
-          locationDiv.classList.add('location');
-
-          const locationName = document.createElement('h3');
-          locationName.textContent = name;
-          locationDiv.appendChild(locationName);
-
-          const locationDescription = document.createElement('p');
-          locationDescription.textContent = description;
-          locationDiv.appendChild(locationDescription);
-
-          locationDiv.addEventListener('click', () => {
-          map.setCenter(locationCoords);
-          map.setZoom(16);
-          if (currentInfoWindow) {
-            currentInfoWindow.close();
-          }
-          infowindow.open(map, marker);
-          currentInfoWindow = infowindow;
-        });
-
-
-
-          const locationsPane = document.getElementById('locations-pane');
-          locationsPane.appendChild(locationDiv);
-
-          const iconSize = new google.maps.Size(32, 32); // Adjust these values to change the icon size
-          const marker = new google.maps.Marker({
-                    position: locationCoords,
-          map: map,
-          title: name,
-          icon: {
-            url: iconHref,
-            scaledSize: iconSize,
-          },
-        });
-
-        const infowindow = new google.maps.InfoWindow({
-          content: `<h3>${name}</h3><p>${description}</p>`,
-        });
-
-        marker.addListener('click', () => {
-          if (currentInfoWindow) {
-            currentInfoWindow.close();
-  }
-  infowindow.open(map, marker);
-  currentInfoWindow = infowindow;
-});
-
-
-        allLocations.push({ locationDiv, styleUrl });
-        allMarkers.push(marker);
-
-
-      }
-    });
-  });
-}
-
-*/
-
         // Add event listeners for checkboxes
         document.getElementById('price-0-300').addEventListener('change', filterLocations);
         document.getElementById('price-300-600').addEventListener('change', filterLocations);
@@ -338,7 +251,6 @@ function initMap() {
     center: { lat: 55.6761, lng: 12.5683 }, // Center the map on Copenhagen
   });
   fetchLocationDataFromGoogleSheets();
-  //fetchLocationDataFromKml(); // Remove if it works
 }
 
 function loadGoogleMapsApi() {
